@@ -1,0 +1,2 @@
+class FeaturedEventsController < ApplicationController
+end

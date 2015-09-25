@@ -1,0 +1,2 @@
+class FeaturedPostsController < ApplicationController
+end
