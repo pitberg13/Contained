@@ -6,7 +6,15 @@ gem 'rails', '4.2.4'
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.3.11'
 
-#gem "acts_as_list", "~> 0.3.0"
+
+#CMS GEMS
+gem "acts_as_list", "~> 0.3.0"
+
+gem 'carrierwave'
+#gem 'mercury-rails'
+gem 'tinymce-rails'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
 
 # Use SCSS for stylesheets
 #gem 'sass-rails', '~> 5.0'

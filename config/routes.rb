@@ -1,14 +1,25 @@
 Rails.application.routes.draw do
 
-  get 'posts/index'
+  #Mercury::Engine.routes
+  #get 'categories/index'
 
-  get 'posts/show'
+  #get 'categories/show'
 
-  get 'posts/new'
+  #get 'categories/new'
 
-  get 'posts/edit'
+  #get 'categories/edit'
 
-  get 'posts/delete'
+  #get 'categories/delete'
+
+  #get 'posts/index'
+
+  #get 'posts/show'
+
+  #get 'posts/new'
+
+  #get 'posts/edit'
+
+  #get 'posts/delete'
 
 root "public#index"
 

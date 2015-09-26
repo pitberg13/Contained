@@ -2,6 +2,8 @@ class EventsController < ApplicationController
 
   #before_action :confirm_logged_in
 
+  layout false
+
   def index
     @events = Event.sorted
   end
@@ -11,7 +13,7 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new({:page_id => @page.id, :name => "Default"})
+    @event = Event.new
     @pages = @page.subject.pages.sorted
     @section_count = Section.count + 1
   end
@@ -35,7 +37,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     if @event.update_attributes(event_params)
-      flash[:notice] = "event updated successfully."
+      flash[:notice] = "Event updated successfully."
       redirect_to(:action => 'ndex')
     else
       @event_count = Section.count
@@ -57,7 +59,7 @@ class EventsController < ApplicationController
   private
 
     def section_params
-      params.require(:section).permit(:category_id, :venue_id, :title, :image, :visible, :content, :event_datetime, :ticket_price, :featured, :permalink, :excerpt)
+      params.require(:event).permit(:category_id, :venue_id, :title, :image, :visible, :content, :event_datetime, :ticket_price, :featured, :permalink, :position)
     end
 
 end

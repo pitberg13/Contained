@@ -8,7 +8,7 @@ class CreateAdminUsers < ActiveRecord::Migration
       t.string "password_digest"
       t.timestamps null: false
     end
-    add_index("username", "event_id", "post_id")
+    add_index("admin_users", "username")
   end
 
   def down
