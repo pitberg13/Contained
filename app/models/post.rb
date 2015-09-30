@@ -5,7 +5,8 @@ class Post < ActiveRecord::Base
 
   acts_as_list
 
-  scope :published, lambda { where(:visible => true) }
+  scope :published, lambda { where(:published => true) }
+  scope :featured, lambda { where(:featured => true) }
   scope :sorted, lambda { order("created_at DESC")}
 
   #PERMALINK_REGEX = [a-z0-9]
@@ -15,7 +16,5 @@ class Post < ActiveRecord::Base
   validates :permalink, :presence => true,
                         :length => { :maximum => 50 },
                         :uniqueness => true
-  validates :venue_id, :presence => true
-  #validates :category_id, :presence => true
 
 end

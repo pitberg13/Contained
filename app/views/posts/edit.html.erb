@@ -1,2 +1,30 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<% @page_title = "Edit Post" %>
+
+<%= javascript_include_tag 'ckeditor/ckeditor.js' %>
+
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="posts edit">
+  <h2>Edit Post</h2>
+
+  <%= form_for(:post, :url => {:action => 'update', :id => @post.id}) do |f| %>
+
+    <%= render(:partial => "form", :locals => {:f => f}) %>
+
+    <div class="form-buttons">
+      <%= submit_tag("Update Post") %>
+    </div>
+
+  <% end %>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    if ($('textarea.ckeditor').length > 0) {
+        var data = $('textarea.ckeditor');
+        $.each(data, function(i) {
+            CKEDITOR.replace(data[i].id);
+        });
+    }
+});
+</script>

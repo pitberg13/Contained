@@ -1,2 +1,14 @@
 <h1>Contained homepage</h1>
 <p>Will pull from @featured_event @featured_news controllers with habtm: :events :posts</p>
+
+<% @page_title = "#BelfastContained" %>
+
+
+<% @post.published.sorted.each do |section| %>
+  <div class="section">
+    <h1><%= post.title %></h1>
+    <img><%= post.image %></img>
+    <p><%= post.content %></p>
+
+  </div>
+<% end %>

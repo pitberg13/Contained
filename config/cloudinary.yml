@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: titanicmedia
+  api_key: '277587724173812'
+  api_secret: V43tG2gnyW_AZBExKcKCFNRjYPg
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: titanicmedia
+  api_key: '277587724173812'
+  api_secret: V43tG2gnyW_AZBExKcKCFNRjYPg
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: titanicmedia
+  api_key: '277587724173812'
+  api_secret: V43tG2gnyW_AZBExKcKCFNRjYPg
+  enhance_image_tag: true
+  static_image_support: false

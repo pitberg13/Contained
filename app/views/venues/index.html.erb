@@ -1,0 +1,28 @@
+<% if !flash[:notice].blank? %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<div class="venues index">
+  <h2>Venues</h2>
+
+  <%= link_to("Add New Venue", {:action => 'new'}, :class => 'action new') %>
+
+  <div><%= pluralize(@venues.size, 'venues') %> found</div>
+
+  <table class="listing" summary="Venues list">
+    <tr class="header">
+      <th>Venue name</th>
+    </tr>
+    <% @venues.each do |venue| %>
+    <tr>
+      <td><%= venue.venue_name %></td>
+      <td class="actions">
+        <%= link_to("Edit", {:action => 'edit', :id => venue.id}, :class => 'action edit') %>
+        <%= link_to("Delete", {:action => 'delete', :id => venue.id}, :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>

@@ -1,37 +1,38 @@
 Rails.application.routes.draw do
 
+  #get 'categories/index'
+  #get 'categories/create'
+  #get 'categories/delete'
+  #get 'venues/index'
+  #get 'venues/create'
+  #get 'venues/delete'
   #Mercury::Engine.routes
   #get 'categories/index'
-
   #get 'categories/show'
-
   #get 'categories/new'
-
   #get 'categories/edit'
-
   #get 'categories/delete'
-
   #get 'posts/index'
-
   #get 'posts/show'
-
   #get 'posts/new'
-
   #get 'posts/edit'
-
   #get 'posts/delete'
 
-root "public#index"
+  root "public#index"
+  get 'program/:permalink', :to => 'public#show'
 
-get "/about/" => "public#about"
-get "/contact/" => "public#contact"
-#get "/events/" => "public#events"
+  match ':controller(/:action(/:id))', :via => [:get, :post]
+  #match ':controller(/:action)', via: [:get, :post]
 
-get 'show/:permalink', :to => 'public#show'
-get 'admin', :to => "access#index"
+  get "/about/" => "public#about"
+  get "/contact/" => "public#contact"
+  #get "/events/" => "public#events"
+  get 'admin', :to => "access#index"
+
+  post '/tinymce_assets' => 'tinymce_assets#create'
 
 #default routes
-match ':controller(/:action(/:id))', :via => [:get, :post]
+
 
   #get 'manage_events/index'
 

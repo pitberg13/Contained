@@ -1,0 +1,39 @@
+<%= error_messages_for(@post) %>
+
+<table summary="Post form fields">
+    <tr>
+      <th>Title</th>
+      <td><%= f.text_field(:title) %></td>
+    </tr>
+    <tr>
+      <th>Permalink</th>
+      <td><%= f.text_field(:permalink) %></td>
+    </tr>
+    <tr>
+      <th>Image</th>
+      <td><%= f.file_field(:image) %></td>
+    </tr>
+    <tr>
+      <th>Published</th>
+      <td><%= f.check_box(:published) %></td>
+    </tr>
+    <tr>
+      <th>Featured</th>
+      <td><%= f.check_box(:featured) %></td>
+    </tr>
+    <tr>
+      <th>Position</th>
+      <td><%= f.select(:position, 1..@post_count) %></td>
+    </tr>
+  </table>
+  <div summary="post content area">
+      <h2>Content</h2>
+      <%= tinymce_assets %>
+      <%= f.text_area :content, class: "tinymce" %>
+      <%= tinymce %>
+    </div>
+
+    <div summary="post content area">
+        <h2>Content</h2>
+        <%= f.text_area :content, class: "rich" %>
+      </div>

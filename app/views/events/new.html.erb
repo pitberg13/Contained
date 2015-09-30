@@ -1,0 +1,17 @@
+<% @page_title = "New Event" %>
+
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="events new">
+  <h2>Create Event</h2>
+
+  <%= form_for(:event, :url => {:action => 'create'}) do |f| %>
+
+    <%= render(:partial => "form", :locals => {:f => f}) %>
+
+    <div class="form-buttons">
+      <%= submit_tag("Create event") %>
+    </div>
+
+  <% end %>
+</div>

@@ -1,2 +1,39 @@
-<h1>Full event listsings goes here/h1>
-<p>Find me in app/views/public/index.html.erb</p>
+<% if !flash[:notice].blank? %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<div class="events index">
+  <h2>Events</h2>
+
+  <%= link_to("Add New Event", {:action => 'new'}, :class => 'action new') %>
+
+  <table class="listing" summary="events list">
+    <tr class="header">
+      <th>Title</th>
+      <th>Event Date</th>
+      <th>Venue</th>
+      <th>Category</th>
+      <th>Visible</th>
+      <th>Featured</th>
+      <th>Position</th>
+      <th>Actions</th>
+    </tr>
+    <% @events.each do |event| %>
+    <tr>
+      <td><%= event.title %></td>
+      <td><%= event.event_datetime %></td>
+      <td><%= event.venue_id %></td>
+      <td><%= event.category_id %></td>
+      <td class="center"><%= event.visible ? 'Yes' : 'No' %></td>
+      <td class="center"><%= event.featured ? 'Yes' : 'No' %></td>
+      <td><%= event.position %></td>
+      <td class="actions">
+        <%= link_to("Edit", {:action => 'edit', :id => event.id}, :class => 'action edit') %>
+        <%= link_to("Delete", {:action => 'delete', :id => event.id}, :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>

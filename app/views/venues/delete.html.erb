@@ -1,0 +1,19 @@
+<% @page_title = "Delete Venue: #{@venue.venue_name}" %>
+
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="venue delete">
+  <h2>Delete Venue</h2>
+
+  <%= form_for(:venue, :url => {:action => 'destroy', :id => @venue.id}) do |f| -%>
+
+    <p>Are you sure you want to permanently remove thsi venue?</p>
+
+    <p class="reference-name"><%= @venue.venue_name %></p>
+
+    <div class="form-buttons">
+      <%= submit_tag("Delete Venue") %>
+    </div>
+
+  <% end %>
+</div>

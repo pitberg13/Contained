@@ -1,0 +1,16 @@
+<% @page_title = "Edit Venue: #{@venue.venue_name}" -%>
+
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="venue edit">
+  <h2>Edit Venues</h2>
+
+  <%= form_for(:venue, :url => {:action => 'update', :id => @venue.id}) do |f| %>
+
+    <%= render(:partial => 'form', :locals => {:f => f} ) %>
+
+    <div class="form-buttons">
+      <%= submit_tag('Update Venue') %>
+    </div>
+  <% end %>
+</div>

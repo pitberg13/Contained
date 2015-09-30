@@ -1,2 +1,34 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<% if !flash[:notice].blank? %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<div class="posts index">
+  <h2>Posts</h2>
+
+  <%= link_to("Add New Post", {:action => 'new'}, :class => 'action new') %>
+
+  <table class="listing" summary="Posts list">
+    <tr class="header">
+      <th>Title</th>
+      <th>Published</th>
+      <th>Featured</th>
+      <th>Position</th>
+      <th>Actions</th>
+    </tr>
+    <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.title %></td>
+      <td class="center"><%= post.published ? 'Yes' : 'No' %></td>
+      <td class="center"><%= post.featured ? 'Yes' : 'No' %></td>
+      <td><%= post.position %></td>
+      <td class="actions">
+        <%= link_to("Show", {:action => 'show', :id => post.id}, :class => 'action show') %>
+        <%= link_to("Edit", {:action => 'edit', :id => post.id}, :class => 'action edit') %>
+        <%= link_to("Delete", {:action => 'delete', :id => post.id}, :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>

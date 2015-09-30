@@ -1,2 +1,16 @@
-<h1>Categories#edit</h1>
-<p>Find me in app/views/categories/edit.html.erb</p>
+<% @page_title = "Edit Category: #{@category.category_title}" -%>
+
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="category edit">
+  <h2>Edit Category</h2>
+
+  <%= form_for(:category, :url => {:action => 'update', :id => @category.id}) do |f| %>
+
+    <%= render(:partial => 'form', :locals => {:f => f} ) %>
+
+    <div class="form-buttons">
+      <%= submit_tag('Update Category') %>
+    </div>
+  <% end %>
+</div>

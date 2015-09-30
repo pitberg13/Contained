@@ -1,2 +1,28 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<% @page_title = "Preview Post" %>
+
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="posts show">
+  <h2>Show Section</h2>
+
+  <table summary="Section detail view">
+    <tr>
+      <th>Post Title</th>
+      <td><%= @post.title %></td>
+    </tr>
+    <tr>
+      <th>Permalink</th>
+      <td><%= @post.permalink %></td>
+    </tr>
+    <tr>
+      <th>Image</th>
+      <td><%= @post.image %></td>
+    </tr>
+    <tr>
+      <th>Content</th>
+      <td><%= raw(@post.content) %></td>
+    </tr>
+
+  </table>
+
+</div>

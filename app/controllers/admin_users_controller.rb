@@ -2,7 +2,7 @@ class AdminUsersController < ApplicationController
 
   layout false
 
-  #before_action :confirm_logged_in
+  before_action :confirm_logged_in
 
     def index
       @admin_users = AdminUser.sorted
@@ -15,7 +15,7 @@ class AdminUsersController < ApplicationController
     def create
       @admin_user = AdminUser.new(admin_user_params)
       if @admin_user.save
-        flash[:notice] = 'New user created.'
+        flash[:notice] = 'New user #{admin_user.username} created.'
         redirect_to(:action => 'index')
       else
         render("new")
@@ -29,10 +29,10 @@ class AdminUsersController < ApplicationController
     def update
       @admin_user = AdminUser.find(params[:id])
       if @admin_user.update_attributes(admin_user_params)
-        flash[:notice] = 'User updated.'
+        flash[:notice] = 'User #{admin_user.username} updated.'
         redirect_to(:action => 'index')
       else
-        render("edit")
+        render("edit", :id => @admin_user.id)
       end
     end
 
@@ -42,15 +42,14 @@ class AdminUsersController < ApplicationController
 
     def destroy
       AdminUser.find(params[:id]).destroy
-      flash[:notice] = "Admin user destroyed."
+      flash[:notice] = "User #{admin_user.username} has been denied."
       redirect_to(:action => 'index')
     end
 
     private
 
     def admin_user_params
-      params.require(:admin_user).permit(:first_name, :last_name,
-        :email, :username, :password)
+      params.require(:admin_user).permit(:username, :email, :password, :password_confirmation, :first_name, :last_name)
     end
 
   end
